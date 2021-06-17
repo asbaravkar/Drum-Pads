@@ -15,11 +15,49 @@ document.addEventListener("keypress", (event)=> {
     animate(triggeredKey)
 })
 
+
+var audio_volume = 0.6
+const slider = document.getElementById("volume__slider")
+slider.oninput = (event) => {
+    audio_volume = event.target.value/100
+}
+
+
 const playMusic = (path) => {
     const audio = new Audio(path)
     audio.play()
+    audio.volume = audio_volume
 }
 
+
+var autoFlag = false
+var autoMusicId;
+const startAutoMusic = () => {
+    const pads = ["w","a","s","d","j","k","l"]
+    autoMusicId = setInterval(() => {
+        const randomKey = pads[Math.floor(Math.random() * pads.length)]
+        makeSound(randomKey)
+        animate(randomKey)
+    }, 200);
+    
+}
+
+
+const autoStartBtn = document.getElementById("util__button-auto")
+autoStartBtn.addEventListener("click", ()=> {
+    if(autoFlag) {
+        clearInterval(autoMusicId)
+        autoFlag = false
+        autoStartBtn.innerText = "Random Beats"
+        autoStartBtn.classList.remove("auto_music_on")
+    }
+    else {
+        startAutoMusic()
+        autoFlag = true
+        autoStartBtn.innerText = "Playing..."
+        autoStartBtn.classList.add("auto_music_on")
+    }
+})
 
 const makeSound = (key) => {
     switch(key) {
