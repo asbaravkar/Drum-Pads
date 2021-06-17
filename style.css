@@ -106,3 +106,8 @@ body{
     color: var(--background);
     background: var(--text);
 }
+
+.pressed{
+    opacity: 0.5;
+    box-shadow: -1px -1px 3px var(--background);
+}
