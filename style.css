@@ -1,6 +1,7 @@
 :root{
     --background:#091921;
     --text:#00fff1;
+    --background_low : rgba(9,25,33,0.8);
 }
 
 *{
@@ -112,7 +113,8 @@ body{
     box-shadow: -1px -1px 3px var(--background);
 }
 
-.auto_music_on{
+.auto_music_on
+.change_theme__pressed{
     box-shadow: inset -1px -1px 3px rgba(255,255,255,0),
     inset 1px 1px 3px rgba(0,0,0,0.8) !important
 }
